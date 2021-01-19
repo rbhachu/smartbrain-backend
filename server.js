@@ -45,6 +45,10 @@ app.post('/imageurl', (req, res) => { image.handleApiCall(req, res)}) // clairfi
 
 
 // server - express js?
-app.listen(3001, () => { // run server on port 3001
-    console.log('app is running on port 3001'); // server message on success
+//app.listen(3001, () => { // run server on port 3001
+//    console.log('app is running on port 3001'); // server message on success
+//})
+
+app.listen(process.env.PORT || 3001, () => { // use dynamic port value or 3001
+  console.log('app is running on port ${process.env.PORT}'); // server message on success
 })
