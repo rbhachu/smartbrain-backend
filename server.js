@@ -28,7 +28,9 @@ app.use(bodyParser.json()); // use 'app.use' as is middleware
 
 
 //user database function
-app.get('/', (req, res)=> { res.send(db.users) })
+//app.get('/', (req, res)=> { res.send(db.users) })
+app.get('/', (req, res)=> { res.send('its is working!') })
+
 
 //sign-in function
 app.post('/signin', (req, res) => { signin.handleSignin(req, res, db, bcrypt) }) // dependency injection, passing 'db' and 'bcrypt' to register.js
