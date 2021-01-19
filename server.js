@@ -54,3 +54,5 @@ app.post('/imageurl', (req, res) => { image.handleApiCall(req, res)}) // clairfi
 app.listen(process.env.PORT || 3001, () => { // use dynamic port value or 3001
   console.log('app is running on port ${process.env.PORT}'); // server message on success
 })
+
+
