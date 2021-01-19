@@ -3,12 +3,9 @@
   "homepage": "https://rbhachu.github.io/smartbrain-api",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "predeploy": "npm run build", 
-    "deploy": "gh-pages -d build", 
-    "start": "nodemon server.js" ,
-    "build": "nodemon server.js" 
+    "start": "nodemon server.js"
   },
   "keywords": [],
   "author": "",
