@@ -1,7 +1,7 @@
 const Clarifai = require('clarifai'); // initialise api app with api key
 const app = new Clarifai.App({ 
-  apiKey: 'fb14adf071cc40f4b62493a64247d8dd'
- });
+  apiKey: process.env.API_CLARIFAI // dynamic key value stored on Heroku servers for security. You can also replace this value with your own key from Clarifai too.
+});
  
  const handleApiCall = (req, res) => {
   app.models
