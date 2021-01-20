@@ -5,8 +5,6 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "predeploy": "npm run build", 
-    "deploy": "gh-pages -d build", 
     "start": "node server.js",
     "start:dev": "nodemon server.js"
   },
@@ -14,7 +12,6 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "gh-pages": "^3.1.0",
     "nodemon": "^2.0.6"
   },
   "dependencies": {
