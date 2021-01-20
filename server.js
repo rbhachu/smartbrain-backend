@@ -9,17 +9,35 @@ const register = require('./controllers/register'); // register function page
 const profile = require('./controllers/profile'); // profile function page
 const image = require('./controllers/image'); // image function page
 
-// db connection
+// db connection - local host
+/*
 const db = knex({ // for connecting to PostgreSQL
     client: 'pg', // type of db
     connection: { 
-      host : '127.0.0.1', // localhost
+      host : '127.0.0.1', // localhost 
       user : 'postgres', // superuser
       password : 'test', // superuser pass
       database : 'smartbrain' // db to connect to
     }
   });
+*/
+
+// db connection - remote heroku
+const db = knex({ // for connecting to PostgreSQL
+  client: 'pg', // type of db
+  connection: { 
+    //host : 'postgresql-tetrahedral-86053',
+    connectionString : process.env.DATABASE_URL, // dynamic database value for heroku    
+    ssl: true
+    //user : 'postgres', // superuser
+    //password : 'test', // superuser pass
+    //database : 'smartbrain' // db to connect to
+  }
+});
+
 //console.log(db.select('*').from('users')); //test connection to db is working
+
+
 
 
 const app = express(); // express js server
