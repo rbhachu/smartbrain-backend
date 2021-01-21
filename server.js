@@ -26,14 +26,10 @@ const db = knex({ // for connecting to PostgreSQL
 const db = knex({ // for connecting to PostgreSQL
   client: 'pg', // type of db
   connection: { 
-    //host : 'postgresql-tetrahedral-86053',
     connectionString: process.env.DATABASE_URL, // dynamic database value for heroku    
     ssl: {
       rejectUnauthorized: false
     }
-    //user : 'postgres', // superuser
-    //password : 'test', // superuser pass
-    //database : 'smartbrain' // db to connect to
   }
 });
 
