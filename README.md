@@ -1,5 +1,5 @@
 # SmartBrain-Backend API - v1
-Facial Recognition App that utilises an API from clarifai.com to detect faces in images.
+Facial Recognition App that utilises an API from clarifai.com to detect and highlight a face in an image.
 Front-end: https://github.com/rbhachu/smartbrain
 
 1. Clone this repo
