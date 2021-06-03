@@ -28,7 +28,7 @@ const db = knex({ // for connecting to PostgreSQL
 const db = knex({ // for connecting to PostgreSQL
   client: 'pg', // type of db
   connection: { 
-    connectionString: process.env.REACT_APP_POSTGRES_URL, // dynamic database value from heroku hosting server    
+    connectionString: DATABASE_URL, // dynamic database value from heroku hosting server    
     ssl: {
       rejectUnauthorized: false
     }
