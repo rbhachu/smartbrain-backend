@@ -9,6 +9,8 @@ const register = require('./controllers/register'); // register function page
 const profile = require('./controllers/profile'); // profile function page
 const image = require('./controllers/image'); // image function page
 
+//const dotenv = require('dotenv').config(); // enviroment vars file
+
 // db connection - local host
 /*
 const db = knex({ // for connecting to PostgreSQL
@@ -26,7 +28,7 @@ const db = knex({ // for connecting to PostgreSQL
 const db = knex({ // for connecting to PostgreSQL
   client: 'pg', // type of db
   connection: { 
-    connectionString: process.env.DATABASE_URL, // dynamic database value for heroku    
+    connectionString: process.env.REACT_APP_DATABASE_URL, // dynamic database value from heroku hosting server    
     ssl: {
       rejectUnauthorized: false
     }
@@ -67,8 +69,8 @@ app.post('/imageurl', (req, res) => { image.handleApiCall(req, res)}) // clairfi
 //    console.log('app is running on port 3001'); // server message on success
 //})
 
-app.listen(process.env.PORT || 3001, () => { // use dynamic port value or 3001
-  console.log('app is running on port ${process.env.PORT}'); // server message on success
+app.listen(process.env.REACT_APP_PORT || 3001, () => { // use dynamic port value or 3001
+  console.log(`app is running on port ${process.env.REACT_APP_PORT}`); // server message on success
 })
 
 
