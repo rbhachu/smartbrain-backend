@@ -1,8 +1,8 @@
 const express = require('express'); // invoke express js server
-const bodyParser = require('body-parser'); // invoke body parser to pass body content through server
 const bcrypt = require('bcrypt-nodejs'); // invoke bcrypt for password encrypt
 const cors = require('cors'); // invoke cors for site cross scripting
 const knex = require('knex'); // invoke knex for connection to PostgreSQL DB
+const dotenv = require('dotenv').config(); // .env vars
 
 const signin = require('./controllers/signin'); // signin function page
 const register = require('./controllers/register'); // register function page
@@ -28,25 +28,24 @@ const db = knex({ // for connecting to PostgreSQL
 const db = knex({ // for connecting to PostgreSQL
   client: 'pg', // type of db
   connection: { 
-    connectionString: "postgres://lccvxelihurjqa:dda4c09c86667c40593b678ae1f7109bd807271fee220a05f9394dd25b595de0@ec2-54-228-9-90.eu-west-1.compute.amazonaws.com:5432/dbj6f760fhjfph", // dynamic database value from heroku hosting server    
+    connectionString: process.env.POSTGRES_URL, // dynamic database value from heroku hosting server    
     ssl: {
       rejectUnauthorized: false
     }
   }
 });
-
-
 //console.log(db.select('*').from('users')); //test connection to db is working
 
 
 const app = express(); // express js server
 app.use(cors()); // use 'app.use' as is middleware
-app.use(bodyParser.json()); // use 'app.use' as is middleware
+app.use(express.json()); // Used to parse JSON bodies
+app.use(express.urlencoded()); // Parse URL-encoded bodies
 
 
 //user database function
 //app.get('/', (req, res)=> { res.send(db.users) })
-app.get('/', (req, res)=> { res.send('its is working1!') })
+app.get('/', (req, res)=> { res.send(`SmartBrain-Backend Running on port ${process.env.PORT}`) })
 
 
 //sign-in function
@@ -68,6 +67,6 @@ app.post('/imageurl', (req, res) => { image.handleApiCall(req, res)}) // clairfi
 //    console.log('app is running on port 3001'); // server message on success
 //})
 
-app.listen(process.env.REACT_APP_PORT || 3001, () => { // use dynamic port value or 3001
-  console.log(`app is running on port ${process.env.REACT_APP_PORT}`); // server message on success
+app.listen(process.env.PORT || 3001, () => { // use dynamic port value or 3001
+  console.log(`app is running on port ${process.env.PORT}`); // server message on success
 })
