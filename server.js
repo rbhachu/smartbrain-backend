@@ -9,10 +9,9 @@ const register = require('./controllers/register'); // register function page
 const profile = require('./controllers/profile'); // profile function page
 const image = require('./controllers/image'); // image function page
 
-//const dotenv = require('dotenv').config(); // enviroment vars file
 
-// db connection - local host
 /*
+// LOCAL db connection
 const db = knex({ // for connecting to PostgreSQL
     client: 'pg', // type of db
     connection: { 
@@ -24,20 +23,20 @@ const db = knex({ // for connecting to PostgreSQL
   });
 */
 
-// db connection - remote heroku
+
+// HEROKU db connection
 const db = knex({ // for connecting to PostgreSQL
   client: 'pg', // type of db
   connection: { 
-    connectionString: DATABASE_URL, // dynamic database value from heroku hosting server    
+    connectionString: "postgres://lccvxelihurjqa:dda4c09c86667c40593b678ae1f7109bd807271fee220a05f9394dd25b595de0@ec2-54-228-9-90.eu-west-1.compute.amazonaws.com:5432/dbj6f760fhjfph", // dynamic database value from heroku hosting server    
     ssl: {
       rejectUnauthorized: false
     }
   }
 });
 
+
 //console.log(db.select('*').from('users')); //test connection to db is working
-
-
 
 
 const app = express(); // express js server
@@ -47,7 +46,7 @@ app.use(bodyParser.json()); // use 'app.use' as is middleware
 
 //user database function
 //app.get('/', (req, res)=> { res.send(db.users) })
-app.get('/', (req, res)=> { res.send('its is working!') })
+app.get('/', (req, res)=> { res.send('its is working1!') })
 
 
 //sign-in function
@@ -72,5 +71,3 @@ app.post('/imageurl', (req, res) => { image.handleApiCall(req, res)}) // clairfi
 app.listen(process.env.REACT_APP_PORT || 3001, () => { // use dynamic port value or 3001
   console.log(`app is running on port ${process.env.REACT_APP_PORT}`); // server message on success
 })
-
-
