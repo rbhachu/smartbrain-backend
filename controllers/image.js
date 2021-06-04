@@ -1,18 +1,18 @@
 const Clarifai = require('clarifai'); // initialise api app with api key
+
+//You must add your own API key here from Clarifai.
 const app = new Clarifai.App({ 
   apiKey: process.env.API_CLARIFAI // dynamic key value stored on Heroku servers for security. You can also replace this value with your own key from Clarifai too.
 });
 
-
-
- const handleApiCall = (req, res) => {
-  app.models
-    .predict(Clarifai.FACE_DETECT_MODEL, req.body.input) // get body input
-    .then(data => { 
-      res.json(data);
-    })
-    .catch(err => res.status(400).json('unable to work with API')) // catch error
- }
+const handleApiCall = (req, res) => {
+app.models
+  .predict(Clarifai.FACE_DETECT_MODEL, req.body.input) // get body input
+  .then(data => { 
+    res.json(data);
+  })
+  .catch(err => res.status(400).json('unable to work with API')) // catch error
+}
 
     // HEADS UP! Sometimes the Clarifai Models can be down or not working as they are constantly getting updated.
    // A good way to check if the model you are using is up, is to check them on the clarifai website. For example,
