@@ -1,6 +1,9 @@
-# SmartBrain-Backend API - v1
+_*Updated Version of this Repo: https://github.com/rbhachu/smartbrain-backend-jwt*_
+<br><br>
+
+## SmartBrain Back-End Server
 Facial Recognition App that utilises an API from clarifai.com to detect and highlight a face in an image.
-Front-end: https://github.com/rbhachu/smartbrain
+Front-End Client Source: https://github.com/rbhachu/smartbrain
 
 1. Clone this repo
 2. Run `npm install`
